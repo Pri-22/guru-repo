@@ -1,0 +1,19 @@
+# Define the provider (e.g., AWS)
+provider "aws" {
+  region = "us-west-2"
+}
+
+# Define an AWS EC2 instance
+resource "aws_instance" "example_instance" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "example-instance"
+  }
+}
+
+# Define a simple output
+output "instance_public_ip" {
+  value = aws_instance.example_instance.public_ip
+}
